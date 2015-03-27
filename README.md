@@ -1,2 +1,2 @@
 # panapix
-An App to take panoramic images using phonegap
+An App to take panoramic images using phonegap.
