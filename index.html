@@ -15,59 +15,45 @@
     <script type="text/javascript" charset="utf-8" src="js/zepto-1.1.6.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript">
-	var gWatchID = null;
-	var gOptions = { frequency: 500 };  // Update every 0.5 seconds
+	function onStartClicked() {
+    	var options = {
+        	quality: 75,
+	        destinationType: CanvasCamera.DestinationType.DATA_URL,
+    	    encodingType: CanvasCamera.EncodingType.JPEG,
+	        width: 640,
+    	    height: 480
+	    };
+    	CanvasCamera.start(options);
+	}
 	//
     // Wait for PhoneGap to load
 	document.addEventListener("deviceready", onDeviceReady, false);
 	//
-	function accelClear() {
-		document.getElementById('accelX').innerHTML = '&nbsp;';
-		document.getElementById('accelY').innerHTML = '&nbsp;';
-		document.getElementById('accelZ').innerHTML = '&nbsp;';
-		document.getElementById('timestamp').innerHTML = '&nbsp;';
-	}
-	function accelUpdate(acceleration) {
-		document.getElementById('accelX').innerHTML = acceleration.x;
-		document.getElementById('accelY').innerHTML = acceleration.y;
-		document.getElementById('accelZ').innerHTML = acceleration.z;
-		document.getElementById('timestamp').innerHTML = acceleration.timestamp;
-	}
-	function accelOff() {
-		navigator.accelerometer.clearWatch(gWatchID);
-	}
-
-	//
 	function onDeviceReady() {
-		navigator.accelerometer.getCurrentAcceleration(accelUpdate, function() {alert("Error on getCurrentAccel");});
-		gWatchID = navigator.accelerometer.watchAcceleration(accelUpdate,
-				function() {
-					alert("Error on watchAccel");
-				},
-				gOptions);
+		alert('device ready.');
+	    // have to call initialize function with canvas object
+
+    	var objCanvas = document.getElementById("canvas");
+	    CanvasCamera.initialize(objCanvas);
+
+    	// window.plugin.CanvasCamera is now available
+		onStartClicked();
 	}
 	//
 	function onLoad() {
-		accelClear();
 	}
 
     </script>
 </head>
 <body onload="onLoad()">
-<div class="button button-block button-large"><img align=left src=images/favicon-48x48.png>Panapix</div>
+<div class="button button-block button-large">
+	<img align=left src=images/favicon-48x48.png>
+	Panapix
+	<button onclick='navigator.app.exitApp()' class="button button-pill button-primary button-large" style="margin:0.1em;float:right;">Exit</button>
+</div>
 <p />&nbsp;<p />
-<span onclick='accelOff()'><button class="button button-pill button-primary button-large" style="margin:0.1em">Clear Watch</button></span>
 
-<span onclick='navigator.app.exitApp()'><button class="button button-pill button-primary button-large" style="margin:0.1em;float:right;">Exit</button></span>
-
-
-<div id=ax class="button button-block button-action button-large" style="margin:1em;">X <span id=accelX></span></div>
-
-<div id=ay class="button button-block button-action button-large" style="margin:1em;">Y <span id=accelY></span></div>
-
-<div id=az class="button button-block button-action button-large" style="margin:1em;">Z <span id=accelZ></span></div>
-
-<div id=ts class="button button-block button-primary button-large" style="margin:1em;">TS <span id=timestamp></span></div>
+<div id=canvas style="margin:1em;">canvas</div>
 
 <div class="copyright" style="padding:5px;align:left;font-style:italic;font-size:small;">
     <span id=copyright>Created by Jesus Monroy, Jr. &copy; 2015</span>

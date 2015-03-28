@@ -8,13 +8,14 @@
         <preference name="phonegap-version" value="3.5.0" />
 
         <name>Panapix</name>
-        <description>A Panaramic Image Capturing App</description>
+        <description>A Panaramic Image Capturing</description>
         <author href="http://bsdmasterindex.com" email="jessemonroy650@yahoo.com">
         Jesse Monroy
         </author>
         <gap:platform name="android" />
         <preference name="permissions" value="none"/>
         <gap:plugin name="org.apache.cordova.device-motion" />
-		<gap:plugin name="org.apache.cordova.camera" />
         <gap:plugin name="org.apache.cordova.geolocation" />
+        <gap:plugin name="org.apache.cordova.device-orientation" />
+		<gap:plugin name="com.keith.cordova.plugin.canvascamera" version="1.0.1" />
     </widget>
