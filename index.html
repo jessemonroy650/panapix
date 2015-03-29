@@ -23,20 +23,21 @@
 	        width: 640,
     	    height: 480
 	    };
-		alert('calling CanvasCamera.start');
+		//alert('calling CanvasCamera.start');
     	CanvasCamera.start(options);
-		alert('CanvasCamera.start');
+		//alert('CanvasCamera.start');
 	}
 	//
     // Wait for PhoneGap to load
 	document.addEventListener("deviceready", onDeviceReady, false);
 	//
 	function onDeviceReady() {
-		alert('device ready.');
+		//alert('device ready.');
 	    // have to call initialize function with canvas object
 
     	var objCanvas = document.getElementById("canvas");
 	    CanvasCamera.initialize(objCanvas);
+		alert('CanvasCamera.initialize done');
 
     	// window.plugin.CanvasCamera is now available
 		onStartClicked();
