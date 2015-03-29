@@ -17,13 +17,9 @@
     <script type="text/javascript">
 	function onStartClicked() {
     	var options = {
-        	quality: 75,
-	        destinationType: CanvasCamera.DestinationType.DATA_URL,
-    	    encodingType: CanvasCamera.EncodingType.JPEG,
-	        width: 640,
-    	    height: 480
+	        destinationType: CanvasCamera.DestinationType.FILE_URI
 	    };
-		//alert('calling CanvasCamera.start');
+		alert('calling CanvasCamera.start');
     	CanvasCamera.start(options);
 		//alert('CanvasCamera.start');
 	}
@@ -37,7 +33,7 @@
 
     	var objCanvas = document.getElementById("canvas");
 	    CanvasCamera.initialize(objCanvas);
-		alert('CanvasCamera.initialize done');
+		alert('CanvasCamera.initialize');
 
     	// window.plugin.CanvasCamera is now available
 		onStartClicked();
