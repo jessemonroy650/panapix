@@ -16,12 +16,6 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript">
 	function onStartClicked() {
-    	var options = {
-	        destinationType: CanvasCamera.DestinationType.FILE_URI
-	    };
-		alert('calling CanvasCamera.start');
-    	CanvasCamera.start(options);
-		//alert('CanvasCamera.start');
 	}
 	//
     // Wait for PhoneGap to load
@@ -32,11 +26,16 @@
 	    // have to call initialize function with canvas object
 
     	var objCanvas = document.getElementById("canvas");
-	    CanvasCamera.initialize(objCanvas);
+	    window.plugin.CanvasCamera.initialize(objCanvas);
 		alert('CanvasCamera.initialize');
 
     	// window.plugin.CanvasCamera is now available
-		onStartClicked();
+    	var options = {
+	        destinationType: window.plugin.CanvasCamera.DestinationType.FILE_URI
+	    };
+		alert('calling CanvasCamera.start');
+    	window.plugin.CanvasCamera.start(options);
+		//alert('CanvasCamera.start');
 	}
 	//
 	function onLoad() {
