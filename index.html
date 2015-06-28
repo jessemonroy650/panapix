@@ -25,7 +25,7 @@
     document.addEventListener('DOMContentLoaded', function() { FastClick.attach(document.body); }, false);
 	//
 	function onDeviceReady() {
-		//alert('device ready.');
+		alert('device ready.');
 
         if (device.platform === "iOS") {
             alert("got iOS.");
@@ -42,7 +42,7 @@
     	var objCanvas = document.getElementById("camera");
 	    window.plugin.CanvasCamera.initialize(objCanvas);
 
-		//alert('CanvasCamera.initialize');
+		alert('CanvasCamera.initialize');
 
     	// window.plugin.CanvasCamera is now available
     	var options = { quality : 75, 
